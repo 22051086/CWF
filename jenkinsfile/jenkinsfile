@@ -25,13 +25,13 @@ pipeline {
         
         stage('S1_22051086') {
             steps {
-				sh ' echo "S1_22051086 : Environment Preparation Completed"
+				sh ' echo "S1_22051086 : Environment Preparation Completed"'
             }
         }
 
         stage('S2_22051086') {
             steps {
-                 sh ' echo "S2_22051086 : Environment Preparation Completed"
+                 sh ' echo "S2_22051086 : Environment Preparation Completed"'
             }
         }
 
@@ -41,13 +41,13 @@ pipeline {
 				
 				stage('S3_22051086') {
 					steps {
-						sh ' echo "S3_22051086 : Environment Preparation Completed"
+						sh ' echo "S3_22051086 : Environment Preparation Completed"'
 					}
 				}
 				
 				stage('S4_22051086') {
 					steps {
-						sh ' echo "S4_22051086 : Environment Preparation Completed"
+						sh ' echo "S4_22051086 : Environment Preparation Completed"'
 					}
 				}
 			}
@@ -55,12 +55,12 @@ pipeline {
 		
 		stage('S5_22051086') {
             steps {
-				sh ' echo "S5_22051086 : Environment Preparation Completed"
+				sh ' echo "S5_22051086 : Environment Preparation Completed"'
             }
         }
 		stage('S6_22051086') {
             steps {
-                 sh ' echo "S6_22051086 : Environment Preparation Completed"
+                 sh ' echo "S6_22051086 : Environment Preparation Completed"'
             }
         }
 		
