@@ -56,10 +56,14 @@ pipeline {
 		
 		stage('S5_22051086') {
             steps {
-				            input {
-                message "Do you want to release the work?"
-                ok "Yes"
-            }
+    		 input {
+           	     message "Do you want to release the work?"
+          	      ok "Yes"
+            		}
+           	 steps {
+                	echo ""
+            		}
+        }
             }
         }
 		stage('S6_22051086') {
