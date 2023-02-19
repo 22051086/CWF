@@ -65,7 +65,7 @@ pipeline {
             		}
         }
             }
-        }
+        
 		stage('S6_22051086') {
             steps {
                  sh ' echo "Work Released - 22051086"'
