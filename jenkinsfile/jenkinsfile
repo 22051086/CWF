@@ -54,17 +54,11 @@ pipeline {
 			}
         }
 		
-		stage('S5_22051086') {
+        stage('S5_22051086') {
             steps {
-    		 input {
-           	     message "Do you want to release the work?"
-          	      ok "Yes"
-            		}
-           	 steps {
-                	echo ""
-            		}
-        }
+                 sh ' echo "step 5"'
             }
+        }
         
 		stage('S6_22051086') {
             steps {
