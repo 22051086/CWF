@@ -31,23 +31,24 @@ pipeline {
 
         stage('S2_22051086') {
             steps {
-                 sh ' echo "S2_22051086 : Environment Preparation Completed"'
+                 sh ' echo "DOCKER BUILD HERE"'
+		 sh ' echo "S2_22051086: Web Server Creation Completed"'
             }
         }
 
-        stage('Printing All Global Variables') {
+        stage('Parallel') {
       
 			parallel {
 				
 				stage('S3_22051086') {
 					steps {
-						sh ' echo "S3_22051086 : Environment Preparation Completed"'
+						sh ' echo "S3_22051086 : API Test Completed"'
 					}
 				}
 				
 				stage('S4_22051086') {
 					steps {
-						sh ' echo "S4_22051086 : Environment Preparation Completed"'
+						sh ' echo "S4_22051086 : DAST Security Test Completed"'
 					}
 				}
 			}
@@ -55,12 +56,15 @@ pipeline {
 		
 		stage('S5_22051086') {
             steps {
-				sh ' echo "S5_22051086 : Environment Preparation Completed"'
+				            input {
+                message "Do you want to release the work?"
+                ok "Yes"
+            }
             }
         }
 		stage('S6_22051086') {
             steps {
-                 sh ' echo "S6_22051086 : Environment Preparation Completed"'
+                 sh ' echo "Work Released - 22051086"'
             }
         }
 		
