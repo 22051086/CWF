@@ -54,13 +54,13 @@ pipeline {
 			}
         }
 		
-   stage("Deploy") {
+   stage("S5_22051086") {
             input {
                 message "Do you want to release the work?"
                 ok "Yes"
             }
             steps {
-                echo "Deploy to the ${DEPLOY_ENV} environment."
+                echo "Releasing"
             }
         }
         
