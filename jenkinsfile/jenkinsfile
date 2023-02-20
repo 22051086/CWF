@@ -17,8 +17,7 @@ pipeline {
     }
 
     environment {
-        APP_NAME = "STUDENT_APP"
-        APP_ENV  = "DEV"
+		docker_image = "ubuntu:18.04"
     }
 
     stages {
@@ -31,7 +30,9 @@ pipeline {
 
         stage('S2_22051086') {
             steps {
-                 sh ' echo "DOCKER BUILD HERE"'
+                 sh '''
+		 	docker pull ${docker_image}
+		 '''
 		 sh ' echo "S2_22051086: Web Server Creation Completed"'
             }
         }
