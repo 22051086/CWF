@@ -17,7 +17,9 @@ pipeline {
     }
 
     environment {
-		docker_image = "ubuntu:18.04"
+		base_image = "ubuntu:18.04"
+		docker_image = "22051086_svr"
+		
     }
 
     stages {
@@ -31,7 +33,8 @@ pipeline {
         stage('S2_22051086') {
             steps {
                  sh '''
-		 	docker pull ${docker_image}
+		 	docker pull ${base_image}
+			docker run -d -it -p 420:80 --name=${docker_image}  ${base_image} /bin/bash -c "apt-get update && apt-get install -y apache2"
 		 '''
 		 sh ' echo "S2_22051086: Web Server Creation Completed"'
             }
