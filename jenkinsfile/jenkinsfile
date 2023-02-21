@@ -34,12 +34,12 @@ pipeline {
 
         stage('S2_22051086') {
             steps {
-                 sh '''
+                 sh """
 		 	docker pull ${base_image}
-			docker run -d -it -p 420:80 --name=${docker_image}  ${base_image} /bin/bash -c \\\"apt-get update && apt-get install -y apache2"\\\
+			docker run -d -it -p 420:80 --name=${docker_image}  ${base_image} /bin/bash -c "apt-get update && apt-get install -y apache2"
 			docker commit ${docker_image} ${docker_webimage}
 			docker run -d -it -p 42000:80 --name=${docker_server} ${docker_webimage}:latest /bin/bash -c \\\"/etc/init.d/apache2 start && tail -f /dev/null cmd"\\\
-		 '''
+		 """
 		 sh ' echo "S2_22051086: Web Server Creation Completed"'
             }
         }
