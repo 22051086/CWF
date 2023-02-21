@@ -21,6 +21,8 @@ pipeline {
 		docker_image = "22051086_svr"
 		docker_webimage = "22051086_webimage"
 		docker_server = "S2_22051986_Server"
+		img_command = "apt-get update ; apt-get install -y apache2"
+		svr_command = "/etc/init.d/apache2 start && tail -f /dev/null cmd"
 		
     }
 
@@ -35,10 +37,12 @@ pipeline {
         stage('S2_22051086') {
             steps {
                  sh """
+                                 docker rm -f ${docker_server}
+		                        docker rm -f ${docker_image}
 		 	docker pull ${base_image}
-			docker run -d -it -p 420:80 --name=${docker_image}  ${base_image} /bin/bash -c "apt-get update && apt-get install -y apache2"
+			docker run -p 420:80 --name=${docker_image}  ${base_image} /bin/bash -c "${img_command}"
 			docker commit ${docker_image} ${docker_webimage}
-			docker run -d -it -p 42000:80 --name=${docker_server} ${docker_webimage}:latest /bin/bash -c "/etc/init.d/apache2 start && tail -f /dev/null cmd"
+			docker run -d -it -p 42000:80 --name=${docker_server} ${docker_webimage}:latest /bin/bash -c "${svr_command}"
 		 """
 		 sh ' echo "S2_22051086: Web Server Creation Completed"'
             }
@@ -77,16 +81,7 @@ pipeline {
                  sh ' echo "Work Released - 22051086"'
             }
         }
-		
-		
-		stage('Cleanup Workspace') {
-            steps {
-                cleanWs()
-                sh """
-                docker rm -f ${docker_server}
-		docker rm -f ${docker_image}
-                """
-            }
+	
         }
     }   
 }
