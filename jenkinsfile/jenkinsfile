@@ -83,7 +83,8 @@ pipeline {
             steps {
                 cleanWs()
                 sh """
-                echo "Cleaned Up Workspace for ${APP_NAME}"
+                docker rm -f ${docker_server}
+		docker rm -f ${docker_image}
                 """
             }
         }
